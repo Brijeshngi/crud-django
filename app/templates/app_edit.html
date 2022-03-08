@@ -1,0 +1,13 @@
+{% load static %}
+
+
+<form action=" " method="POST">
+    {% csrf_token %}  
+    {% for field in form %}
+    <div>
+        {{ field }}
+    </div>
+    {% endfor %}
+    <button value="updatetask" type="submit">Update</button>
+    
+</form>

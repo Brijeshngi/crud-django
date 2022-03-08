@@ -1,0 +1,48 @@
+{% load static%}
+<!DOCTYPE html>
+<head>
+<title>{{title}}</title>
+</head>
+
+<body>
+
+<center>
+<h1><i>To do list </i></h1>	
+</center>
+
+  
+	
+{% for i in list %}
+{{forloop.counter}}<br>
+<h1>{{i.title}}</h1>
+{{i.description}}<br>
+{{i.date}}<br><br>
+{{i.completed}}<br><br>
+
+{% csrf_token %}
+<form action="delete/{{i.id}}" method="GET" >
+
+<button value="remove" type="submit" style="float: left;">Remove</button>
+
+</form>
+{% csrf_token %}
+<form action="update/{{i.id}}" method="GET" >
+
+    
+<button value="update" type="submit" style="float: left;">update</button>
+    
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endfor%}
+<form  method="POST">
+{% csrf_token %}
+{{forms}}
+<input type="submit"  value="submit" />
+
+</form>
+</body>
+</html>
